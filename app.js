@@ -19,10 +19,16 @@ let searchData = async ()=>{
 };
 
 let showData = (data)=>{
-    showWeather.innerHTML = `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="">
-    <h1 class="text-success">Country: ${data.sys.country}</h1>
-    <h2 class="text-success">Weather: ${data.weather[0].main}</h2>
-    <h3 class="text-success">Temp: ${data.main.temp} C</h3>
-        <h3 class="text-success">Wind Speed: ${data.wind.speed}</h3>
-        <h3 class="text-success">Humidity: ${data.main.humidity}</h3>`
+    if(data.cod == '400'){
+        showWeather.innerHTML = `<h1>not found</h1>`;
+    }
+    else{
+        showWeather.innerHTML = `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="">
+        <h1 class="text-success"><b>Country:</b> ${data.sys.country}</h1>
+        <h2 class="text-success"><b>Weather:</b> ${data.weather[0].main}</h2>
+        <h3 class="text-success"><b>Temp:</b> ${data.main.temp} C</h3>
+        <h3 class="text-success"><b>Wind Speed:</b> ${data.wind.speed}</h3>
+        <h3 class="text-success"><b>Humidity:</b> ${data.main.humidity}</h3>`
+
+    }
 }
